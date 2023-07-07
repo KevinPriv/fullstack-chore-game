@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<style>
+      .bs-example table{
+      padding: 15px;
+      font-size: 18px;
+      background: #dbdfe5;
+      }
+   </style>
+<!-- Bootstrap Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <img src="images/logo.svg" height="35">
+        <a href="/" class="navbar-brand">Housework RPG</a>
+        <button type="button" class="navbar-toggler"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+               <span th:if="${profile.moderator}">
+               <a href="/manager" class="nav-item nav-link">Manage Group</a>
+               </span>
+                <a href="/tasks" class="nav-item nav-link">Tasks</a>
+                <a href="/stats" class="nav-item nav-link">Stats</a>
+                <a href="/game" class="nav-item nav-link">Game</a>
+                <a href="/logout" class="nav-item nav-link">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<body>
+<h1>Tasks Overview</h1>
+<br>
+<h2>Available Tasks</h2>
+<table class="table table-bordered table-hover table-dark me-5">
+    <thead>
+    <tr>
+        <th scope="col">Task</th>
+        <th scope="col">XP</th>
+        <th scope="col">Complete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${tasks}">
+               <span th:if="${task.completed != true}">
+                  <td><span th:text="${task.name}"> Task </span></td>
+                  <td><span th:text="${task.exp}"> XP </span></td>
+                  <td>
+                     <form method="POST" th:action="@{/finished_task(id=${task.id})}">
+                        <fieldset>
+                           <div class="form-actions">
+                              <button type="submit" class="btn btn-primary">Complete</button>
+                           </div>
+                        </fieldset>
+                     </form>
+                  </td>
+               </span>
+    </tr>
+    </tbody>
+</table>
+<br>
+<h2>Your completed tasks</h2>
+<table class="table table-bordered table-hover table-dark me-5">
+    <thead>
+    <tr>
+        <th scope="col">Task</th>
+        <th scope="col">XP</th>
+        <th scope="col">Confirmed</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${completedTasks}">
+        <td><span th:text="${task.name}"> Task </span></td>
+        <td><span th:text="${task.exp}"> XP </span></td>
+        <td><span th:text="${task.confirmed ? 'Yes' : 'No'}"> Confirmed </span></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<h2>Difficulty Levels</h2>
+<table class="table table-bordered table-dark table-sm">
+    <thead>
+    <tr>
+        <th scope="col">Easy</th>
+        <th scope="col">Medium</th>
+        <th scope="col">Hard</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1 XP<img
+                src="images/easyTask.svg"
+                class="w-25"
+        /></td>
+        <td>2 XP<img
+                src="images/medTask.svg"
+                class="w-25"
+        /></td>
+        <td>3 XP<img
+                src="images/hardTask.svg"
+                class="w-25"
+        /></td>
+    </tr>
+    </tbody>
+</table>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

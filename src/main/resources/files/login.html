@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log In</title>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<!-- Bootstrap Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <img src="images/logo.svg" height="35">
+        <a href="/" class="navbar-brand">Housework RPG</a>
+        <button type="button" class="navbar-toggler"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="/login" class="nav-item nav-link">Login</a>
+                <a href="/registration" class="nav-item nav-link">Register</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<body>
+<h1><U>Log In</U></h1>
+<br>
+<div class="row">
+    <div class="col-lg-7 mb-lg-0 mx-auto d-flex justify-content-center">
+        <img
+                src="images/book.svg"
+                class="w-25 shadow-1-strong rounded mb-4"
+                alt="Housework RPG"
+        />
+    </div>
+</div>
+
+<form th:action="@{/login}" method="post">
+    <div class="row">
+        <br>
+        <div class="row">
+            <!-- Log In -->
+            <div class="col-sm">
+                <br>
+                <h2>Log In</h2>
+                <fieldset>
+                    <div th:if="${param.error}">
+                        <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+                    </div>
+                    <div th:if="${param.logout}">
+                        <p class="text-warning">You have been logged out.</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="username">Username</label>
+                        <input class="form-control" id="username" name="username" placeholder="Username" type="text">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="checkRemember">
+                            <label class="form-check-label" for="checkRemember">Remember me</label>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" value="Login" class="btn btn-primary">Sign in</button>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

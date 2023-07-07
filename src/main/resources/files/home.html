@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<!-- Bootstrap Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <img src="images/logo.svg" height="35">
+        <a href="/" class="navbar-brand">Housework RPG</a>
+        <button type="button" class="navbar-toggler"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="/login" class="nav-item nav-link">Login</a>
+                <a href="/registration" class="nav-item nav-link">Register</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<body>
+<h1 style="text-align:center">Welcome to Housework RPG!</h1>
+<br>
+<div class="row">
+    <div class="col-lg-7 mb-lg-0 mx-auto d-flex justify-content-center">
+        <img
+                src="images/logo.svg"
+                class="w-50 shadow-1-strong rounded mb-4"
+                alt="Housework RPG"
+        />
+    </div>
+</div>
+<br>
+<!-- About Section -->
+<div class="accordion" id="myAccordion" >
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne">What is Housework RPG?</button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show">
+            <div class="card-body">
+                <p>An RPG-like system designed to encourage people of all ages to complete their housework and earn rewards by doing so.</p>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo">How does it work?</button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse">
+            <div class="card-body">
+                <p>Players will sign up to a household and will compete against each other to complete housework.<br>
+                    For each piece of housework completed the players will be given experience points which can be used to make the player stronger and more likely to win by the end of the month.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

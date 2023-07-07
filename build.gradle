@@ -1,0 +1,57 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'idea'
+    id 'application'
+}
+
+group = 'com.houseworkrpg'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+targetCompatibility = 1.8
+sourceSets {
+    main {
+        java {
+            srcDirs= ["src/main/java"]
+        }
+        resources {
+            srcDirs= ["src/main/resources"]
+        }
+    }
+}
+
+
+application {
+    mainClass = 'com.houseworkrpg.webservice.WebserviceApplication'
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
+}
+
+dependencies {
+    // tag::actuator[]
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    // end::actuator[]
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation("javax.validation:validation-api:2.0.1.Final")
+
+    implementation 'mysql:mysql-connector-java'
+    // tag::tests[]
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    // end::tests[]
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar{
+    baseName = 'HouseworkRPG'
+    version = '1.0-BETA'
+}

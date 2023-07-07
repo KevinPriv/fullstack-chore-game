@@ -1,0 +1,40 @@
+.bs-example{
+     margin: 20px;
+     border: 1px solid #ccc;
+}
+ .bs-example div{
+     padding: 15px;
+     font-size: 20px;
+     background: #dbdfe5;
+}
+ .table{
+     padding: 15px;
+     font-size: 18px;
+     background: #dbdfe5;
+}
+ body{
+     padding: 65px 15px;
+     font-size: 18px;
+     color: white;
+     background: #275e3e;
+     background-image: url('../images/Background.png');
+}
+ .accordion{
+     background-color: black;
+     color: black;
+}
+ .navbar-expand{
+    -sm|-md|-lg|-xl|-xxl
+}
+ @media (min-width: 768px) {
+     .row-relative {
+         position:relative;
+    }
+     .col-border-padding {
+        padding-left: 15px;
+    }
+     .col-border {
+         padding-left: 0;
+         position: static;
+    }
+}
